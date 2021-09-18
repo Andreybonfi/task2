@@ -48,6 +48,7 @@ connection.connect(function (err) {
 app.post("/upload", function (req, res) {
 
     let filedata = req.file;
+    //Генерация имени файла с учетом последовательности загрузки
     fs.rename('./uploads/' + filedata.filename, './uploads/' + 'File-' + count + '.xlsx', (err) => {
     });
     setTimeout(parser, 2500, 'File-' + count + '.xlsx');
@@ -72,7 +73,7 @@ app.post("/upload", function (req, res) {
 });
 
 //Метод вызываемый выбором файл в форме  
-// Вывод информации о нужном файде из бж
+// Вывод информации о нужном файде из бд
 app.get("/edit/:index", (req, res) => {
    
     const index = req.params.index;
@@ -91,6 +92,7 @@ app.get("/edit/:index", (req, res) => {
 
     });
 });
+
 //Метод вызываемый обращением к localhost:5000
 app.get("/", (req, res) => {
 
@@ -148,14 +150,17 @@ function parser(name) {
                 connection.query(sql, [count, points[0], class1], function (err, results) {
                     if (err) console.log(err);
                 });
+                
                 const sql1 = `INSERT INTO outbalances(active1,passive1) VALUES (?,?) `;
                 connection.query(sql1, [points[1], points[2]], function (err, results) {
                     if (err) console.log(err);
                 });
+                
                 const sql2 = `INSERT INTO turnovers(debit,credit) VALUES (?,?) `;
                 connection.query(sql2, [points[3], points[4]], function (err, results) {
                     if (err) console.log(err);
                 });
+                
                 const sql3 = `INSERT INTO openbalance(active,passive) VALUES (?,?) `;
                 connection.query(sql3, [points[5], points[6]], function (err, results) {
                     if (err) console.log(err);
