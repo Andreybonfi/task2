@@ -1,0 +1,24 @@
+{
+  "name": "projNode",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.js",
+  "dependencies": {
+    "express": "^4.17.1",
+    "hbs": "^4.1.2",
+    "multer": "^1.4.3",
+    "mysql": "^2.18.1",
+    "node-xlsx": "^0.17.1",
+    "nodemon": "^2.0.12",
+    "promise": "^8.1.0",
+    "xlsx-mysql": "^1.0.8"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon app.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}
