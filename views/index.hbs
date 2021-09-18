@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU" crossorigin="anonymous">
+    <link rel="stylesheet" href="/style.css">
+    <title>Document</title>
+</head>
+
+<body>
+    <h1>Upload file</h1>
+    <form action="/upload" method="post" enctype="multipart/form-data">
+        <label>Файл</label><br>
+        <input type="file" name="filedata" /><br><br>
+        <input type="submit" value="Send" />
+    </form>
+
+
+     
+     <table class="table table-bordered">
+        <thead>
+            <tr>
+                <th scope="col">Индекс</th>
+                <th scope="col">Имя Файла</th>
+            </tr>
+        </thead>
+        <tbody>
+            {{#each file}}
+            <tr>
+              <td>{{this.index}}</td>
+              <td>{{this.namefile}}</td>
+              <td><a href="/edit/{{this.index}}">Edit</a></td>
+            </tr>
+            {{/each}}
+        </tbody>
+    </table>
+ 
+ 
+    
+    <table class="table table-bordered">
+        <thead>
+            <tr>
+                <th scope="col">Номер счета</th>
+                <th scope="col">Номер класса</th>
+                <th scope="col">актив</th>
+                <th scope="col">пассив</th>
+                <th scope="col">дебет</th>
+                <th scope="col">кредит</th>
+                <th scope="col">актив</th>
+                <th scope="col">пассив</th>
+            </tr>
+        </thead>
+        <tbody>
+            {{#each banks}}
+            <tr>
+                <td>{{this.bankNumber}}</td>
+                <td>{{this.classN}}</td>
+                <td>{{this.about}}</td>
+                <td>{{this.active}}</td>
+                <td>{{this.passive}}</td>
+                <td>{{this.debit}}</td>
+                <td>{{this.credit}}</td>
+                <td>{{this.active1}}</td>
+                <td>{{this.passive1}}</td>
+            </tr>
+            {{/each}}
+        </tbody>
+    </table>
+
+
+</body>
+
+</html>
